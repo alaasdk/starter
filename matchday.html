@@ -7,13 +7,36 @@
     <script src='football.js'></script>
     <script>
 $(document).ready( function() { 
+
+$("#fire").click(function(){
+console.log("sdf");
    var api_base = "http://footballdb.herokuapp.com/api/v1"
    var world_cup_widget = footballdb_widget_new( '#world', api_base );
-   world_cup_widget.update( 'world.2014', '2' );
+   world_cup_widget.update( $("#SlcBtola")[0].value, $("#txtRound")[0].value );
+
 });
+
+
+});
+
+
+
   </script>
   </head>
   <body>
-    <div id='world'></div>  
+  <label> World 
+  <select id='SlcBtola' style="width:100px;">
+	<option value="world.2014">world.2014</option>
+	<option value="euro.2012">euro.2012</option>
+  </select>
+  </label>
+  <BR>
+ <label>Round: <input  style="width:100px;" type="number" id="txtRound" value="1" /></label>
+  <BR>
+  <input type="button" value="fire" id="fire">
+
+
+
+  <div id='world'></div>  
   </body>
 </html>
