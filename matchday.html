@@ -8,13 +8,17 @@
     <script>
 $(document).ready( function() { 
 
-$("#fire").click(function(){
-console.log("sdf");
-   var api_base = "http://footballdb.herokuapp.com/api/v1"
-   var world_cup_widget = footballdb_widget_new( '#world', api_base );
-   world_cup_widget.update( $("#SlcBtola")[0].value, $("#txtRound")[0].value );
+	$("#fire").click(function(){
+	
+	   var api_base = "http://footballdb.herokuapp.com/api/v1"
+	   var world_cup_widget = footballdb_widget_new( '#world', api_base );
+	   world_cup_widget.update( $("#SlcBtola")[0].value, $("#txtRound")[0].value );
 
-});
+	});
+	
+	$( document ).ajaxComplete(function( event, xhr, settings ) {
+		$("#ResponseContainer").html(JSON.stringify(xhr.responseJSON));
+	});
 
 
 });
@@ -35,8 +39,14 @@ console.log("sdf");
   <BR>
   <input type="button" value="fire" id="fire">
 
-
-
+<BR><BR>
+ Response Formatted.......<BR>
   <div id='world'></div>  
+  
+  <BR>
+  
+  
+  Response JSON.......<BR>
+  <textarea id="ResponseContainer" style="width:600px; height:150px;"></textarea>
   </body>
 </html>
